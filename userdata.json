@@ -1,0 +1,184 @@
+{
+  "U09E7D6P612": {
+    "hacktimeUsername": "Coppersid",
+    "minutesUsedForCatching": 11,
+    "cachedHackatimeMinutes": 642,
+    "lastHackatimeSync": 1774769811089,
+    "pokemonTeam": [
+      {
+        "pokemonLevel": 2,
+        "pokemonXp": 0,
+        "moves": [
+          "tackle",
+          "quick strike"
+        ],
+        "id": 144,
+        "name": "ARTICUNO",
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/144.png",
+        "stats": {
+          "hp": 90,
+          "attack": 85,
+          "defense": 100,
+          "sp_atk": 95,
+          "sp_def": 125,
+          "speed": 85
+        },
+        "types": [
+          "ice",
+          "flying"
+        ]
+      },
+      {
+        "pokemonLevel": 1,
+        "pokemonXp": 0,
+        "moves": [
+          "tackle"
+        ],
+        "id": 17,
+        "name": "PIDGEOTTO",
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/17.png",
+        "stats": {
+          "hp": 63,
+          "attack": 60,
+          "defense": 55,
+          "sp_atk": 50,
+          "sp_def": 50,
+          "speed": 71
+        },
+        "types": [
+          "normal",
+          "flying"
+        ]
+      },
+      {
+        "pokemonLevel": 1,
+        "pokemonXp": 0,
+        "moves": [
+          "tackle"
+        ],
+        "id": 149,
+        "name": "DRAGONITE",
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/149.png",
+        "stats": {
+          "hp": 91,
+          "attack": 134,
+          "defense": 95,
+          "sp_atk": 100,
+          "sp_def": 100,
+          "speed": 80
+        },
+        "types": [
+          "dragon",
+          "flying"
+        ]
+      },
+      {
+        "pokemonLevel": 1,
+        "pokemonXp": 0,
+        "moves": [
+          "tackle"
+        ],
+        "id": 40,
+        "name": "WIGGLYTUFF",
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/40.png",
+        "stats": {
+          "hp": 140,
+          "attack": 70,
+          "defense": 45,
+          "sp_atk": 85,
+          "sp_def": 50,
+          "speed": 45
+        },
+        "types": [
+          "normal",
+          "fairy"
+        ]
+      },
+      {
+        "pokemonLevel": 2,
+        "pokemonXp": 0,
+        "moves": [
+          "tackle",
+          "quick strike"
+        ],
+        "id": 145,
+        "name": "ZAPDOS",
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/145.png",
+        "stats": {
+          "hp": 90,
+          "attack": 90,
+          "defense": 85,
+          "sp_atk": 125,
+          "sp_def": 90,
+          "speed": 100
+        },
+        "types": [
+          "electric",
+          "flying"
+        ]
+      },
+      {
+        "pokemonLevel": 1,
+        "pokemonXp": 0,
+        "moves": [
+          "tackle"
+        ],
+        "id": 20,
+        "name": "RATICATE",
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/20.png",
+        "stats": {
+          "hp": 55,
+          "attack": 81,
+          "defense": 60,
+          "sp_atk": 50,
+          "sp_def": 70,
+          "speed": 97
+        },
+        "types": [
+          "normal"
+        ]
+      },
+      {
+        "pokemonLevel": 1,
+        "pokemonXp": 0,
+        "moves": [
+          "tackle"
+        ],
+        "id": 121,
+        "name": "STARMIE",
+        "types": [
+          "water",
+          "psychic"
+        ],
+        "stats": {
+          "hp": 60,
+          "attack": 75,
+          "defense": 85,
+          "speed": 115
+        }
+      }
+    ],
+    "pokedex": [
+      144,
+      17,
+      149,
+      40,
+      145,
+      20,
+      121
+    ],
+    "totalCaught": 6,
+    "level": 3,
+    "xp": 190,
+    "battleRecord": {
+      "wins": 0,
+      "losses": 0
+    },
+    "primaryLanguage": "HTML",
+    "gymBadges": [
+      1
+    ],
+    "minutesUsedForGymChallenge": 10,
+    "dailyQuest": null
+  }
+}
