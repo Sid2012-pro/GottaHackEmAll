@@ -1,6 +1,5 @@
 const axios = require('axios');
 require('dotenv').config();
-const fs = require('fs');
 const path = require('path');
 const { App, ExpressReceiver } = require('@slack/bolt');
 
@@ -13,7 +12,24 @@ const app = new App({
 });
 
 // == constants ==
-const DATA_FILE = path.join(__dirname, 'userdata.json');
+const { Pool } = require('pg');
+
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false } // Required for Railway
+});
+
+// Create the table if it doesn't exist (Run this once)
+const setupDatabase = async () => {
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS users (
+      user_id TEXT PRIMARY KEY,
+      pokemon_json JSONB DEFAULT '[]'
+    );
+  `);
+  console.log("🐘 Postgres is ready!");
+};
+setupDatabase();
 const activeBattles = new Map();
 // the channel where im spawning wild pokemon every hour or so - MAKE SURE TO JOIN hackemon on hack club workspace!
 const WILD_SPAWN_CHANNEL = 'C0APN5D2HGC';
