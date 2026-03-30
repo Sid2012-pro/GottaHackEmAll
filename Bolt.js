@@ -54,48 +54,20 @@ app.use(async ({ ack, next }) => {
   }
   await next();
 });
-function loadUserData() {
-  try {
-    if (fs.existsSync(DATA_FILE)) return JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
-  } catch (e) { console.error('Error loading user data:', e); }
-  return {};
-}
+const getUserData = async (userId) => {
+  const res = await pool.query('SELECT pokemon_json FROM users WHERE user_id = $1', [userId]);
+  return res.rows.length > 0 ? res.rows[0].pokemon_json : [];
+};
 
-function saveUserData(data) {
-  try {
-    const merged = { ...loadUserData(), ...data };
-    fs.writeFileSync(DATA_FILE, JSON.stringify(merged, null, 2));
-  } catch (e) { console.error('Error saving user data:', e); }
-}
+const saveUserData = async (userId, pokemonArray) => {
+  await pool.query(`
+    INSERT INTO users (user_id, pokemon_json)
+    VALUES ($1, $2)
+    ON CONFLICT (user_id) 
+    DO UPDATE SET pokemon_json = $2;
+  `, [userId, JSON.stringify(pokemonArray)]);
+};
 
-function getUserData(userId) {
-  const data = loadUserData();
-  if (!data[userId]) {
-    data[userId] = {
-      hacktimeUsername: null, minutesUsedForCatching: 0,
-      pokemonTeam: [], pokedex: [], totalCaught: 0,
-      level: 1, xp: 0, cachedHackatimeMinutes: 0,
-      lastHackatimeSync: 0, battleRecord: { wins: 0, losses: 0 },
-      primaryLanguage: null, dailyQuest: null,
-    };
-    saveUserData({ [userId]: data[userId] });
-  }
-  const u = data[userId];
-  if (!u.battleRecord) u.battleRecord = { wins: 0, losses: 0 };
-  if (!u.dailyQuest) u.dailyQuest = null;
-
-  // FIX: Migrate pokemon to have level fields and persist the migration
-  if (u.pokemonTeam) {
-    const migrated = u.pokemonTeam.map(p => ({
-      pokemonLevel: 1, pokemonXp: 0, moves: ['tackle'], ...p,
-    }));
-    // Only save if something actually changed
-    const changed = JSON.stringify(migrated) !== JSON.stringify(u.pokemonTeam);
-    u.pokemonTeam = migrated;
-    if (changed) saveUserData({ [userId]: u });
-  }
-  return u;
-}
 
 function getAllUserData() { return loadUserData(); }
 
