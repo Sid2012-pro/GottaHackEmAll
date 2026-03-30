@@ -31,7 +31,13 @@ const LEVEL_MOVES = {
 };
 const pendingChallenges = new Map();
 const wildSpawns = new Map(); // ts -> { pokemon, channelId, expiresAt, caught }
-
+app.use(async ({ ack, next }) => {
+  try {
+    await ack();
+  } catch (e) {
+  }
+  await next();
+});
 function loadUserData() {
   try {
     if (fs.existsSync(DATA_FILE)) return JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
@@ -111,7 +117,6 @@ function getBoostedStats(pokemon) {
 }
 
 function levelUpPokemon(userData, teamIndex) {
-  await ack();
   const pokemon = userData.pokemonTeam[teamIndex];
   if (!pokemon) return { success: false, reason: 'Pokémon not found.' };
   const lvl = pokemon.pokemonLevel || 1;
