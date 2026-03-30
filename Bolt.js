@@ -111,6 +111,7 @@ function getBoostedStats(pokemon) {
 }
 
 function levelUpPokemon(userData, teamIndex) {
+  await ack();
   const pokemon = userData.pokemonTeam[teamIndex];
   if (!pokemon) return { success: false, reason: 'Pokémon not found.' };
   const lvl = pokemon.pokemonLevel || 1;
